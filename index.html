@@ -3,298 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的客服</title>
+    <title>中国人寿财产保险客服页面</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            font-family: "Microsoft Yahei", sans-serif;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f5f7fa; /* 模拟浅色背景 */
-            color: #333;
-            height: 100vh;
-            overflow: hidden;
-        }
-        
-        .mobile-container {
-            width: 100%;
-            height: 100%;
-            max-width: 480px; /* 模拟手机宽度 */
-            margin: 0 auto;
+            /* 第二张图作为背景 */
+            
+            background-size: cover;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            position: relative;
-            background-color: #fff;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            align-items: center;
+            padding: 20px;
         }
 
-        /* 顶部状态栏 (模拟) */
-        .status-bar {
-            height: 44px;
-            background: #f5f7fa;
+        /* 顶部Logo行 */
+        .logo-header {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 0 15px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
         }
-        .status-bar .time { font-size: 15px; }
-        .status-bar .right { display: flex; gap: 4px; align-items: center; }
-        .status-bar .signal { width: 18px; height: 12px; background: #333; border-radius: 2px; position: relative; }
-        .status-bar .network { font-size: 13px; margin-left: 2px; }
-        .status-bar .battery { width: 22px; height: 11px; border: 1px solid #333; border-radius: 2px; margin-left: 3px; position: relative; }
-        .status-bar .battery::after { content: ''; position: absolute; right: -2px; top: 2px; width: 1px; height: 5px; background: #333; border-radius: 0 1px 1px 0; }
 
-        /* 头部导航 */
-        .header {
+        .logo-header img {
+            height: 60px;
+            /* 第三张图作为logo */
+            content: url('top.png');
+        }
+
+        /* 客服页面容器 */
+        .customer-service-container {
+            width: 100%;
+            max-width: 800px;
+            #background-color: rgba(255, 255, 255, 0.95);
+            #background:url('bg.png') no-repeat center center fixed;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 顶部客服栏 */
+        .service-header {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
+            padding: 15px 20px;
             border-bottom: 1px solid #eee;
-            background: #fff;
         }
-        .header .back-btn {
+
+        .back-btn {
             font-size: 20px;
             color: #666;
-            margin-right: 12px;
+            margin-right: 15px;
             cursor: pointer;
         }
-        .header .avatar {
-            width: 40px;
-            height: 40px;
+
+        .avatar {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background: #eee url('11.jpg') center/cover no-repeat;
+            background-color: #ddd;
             margin-right: 10px;
-            border: 1px solid #eee;
-        }
-        .header .info { flex: 1; }
-        .header .title {
-            font-size: 16px;
-            font-weight: 500;
-            color: #333;
-        }
-        .header .subtitle {
-            font-size: 12px;
-            color: #999;
-            margin-top: 2px;
+            background-image: url('https://picsum.photos/id/64/36/36');
+            background-size: cover;
         }
 
-        /* 主要内容区域 */
-        .main-content {
+        .service-title {
             flex: 1;
-            overflow-y: auto;
-            padding: 15px;
-            background-color: #f5f7fa; /* 整体背景色 */
-            display: flex;
-            flex-direction: column;
         }
 
-        /* 咨询卡片 */
-        .consult-card {
-            background-color: #fff;
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            margin-bottom: 15px;
+        .service-title h2 {
+            font-size: 18px;
+            color: #333;
+            font-weight: normal;
         }
-        .card-header {
+
+        .service-title p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        /* 常见问题区域 */
+        .faq-section {
+            padding: 20px;
+            background: url('bg.png') no-repeat center center fixed;
+            background-size:cover;
+        }
+
+        .faq-title {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
-        .card-title {
+
+        .faq-title span {
+            color: #ff7a9c;
             font-size: 16px;
-            font-weight: 500;
-            color: #333;
-            background: linear-gradient(to right, #ff9a9e, #fecfef); /* 渐变标题背景 */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
+
         .change-btn {
-            padding: 4px 10px;
-            background: #f5f5f5;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            font-size: 12px;
             color: #666;
-            display: flex;
-            align-items: center;
-            gap: 3px;
+            font-size: 14px;
             cursor: pointer;
         }
-        .change-btn:hover { background: #eee; }
 
-        /* 问题列表 */
-        .question-list {
+        .faq-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
-        .question-item {
-            padding: 12px 15px;
-            background-color: #fff;
-            border: 1px solid #eee;
-            border-radius: 12px;
+
+        .faq-item {
+            #background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 15px;
+            color: #333;
             display: flex;
             align-items: center;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 14px;
-            color: #333;
+            transition: background-color 0.2s;
         }
-       question-item:hover . {
-            background-color: #fafafa;
-            border-color: #ddd;
-            transform: translateY(-1px);
-        }
-        .question-item .icon {   
-         margin-right: 10px;
-            font-size: 12px;
-            color: #ff6b6b; /* 图标颜色 */
-        }
-        .question-item:nth-child(1) .icon { color: #ff6b6b; } /* 第一个红色 */
-        .question-item:nth-child(2) .icon { color: #ff9f43; } /* 第二个橙色 */
-        .question-item:nth-child(3) .icon { color: #feca57; } /* 第三个黄色 */
-        .question-item:nth-child(4) .icon { color: #c8d6e5; } /* 第四个灰色 */
 
-        /* 底部功能区 */
-        .bottom-area {
-            padding: 15px;
-            background: #fff;
-            border-top: 1px solid #eee;
+        .faq-item:hover {
+            background-color: #e9ecef;
         }
+
+        .faq-item::before {
+            content: "◆";
+            font-size: 10px;
+            margin-right: 10px;
+        }
+
+        .faq-item:nth-child(1)::before {
+            color: #ff6b6b;
+        }
+
+        .faq-item:nth-child(2)::before {
+            color: #ffa94d;
+        }
+
+        .faq-item:nth-child(3)::before {
+            color: #ffd43b;
+        }
+
+        .faq-item:nth-child(4)::before {
+            color: #dee2e6;
+        }
+
+        /* 底部按钮区域 */
         .bottom-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
+            padding: 10px;
+            gap: 15px;
+            border-top: 1px solid #eee;
         }
+
         .bottom-btn {
             flex: 1;
-            padding: 8px 12px;
-            background-color: #f5f5f5;
-            border: 1px solid #eee;
-            border-radius: 20px;
-            font-size: 13px;
-            color: #666;
-            text-align: center;
+            padding: 12px;
+            background-color: #f1f3f5;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #495057;
             cursor: pointer;
-            transition: background 0.2s;
         }
-        .bottom-btn:hover { background: #eee; }
 
-        /* 提问按钮 */
+        .bottom-btn:hover {
+            background-color: #e9ecef;
+        }
+
         .ask-btn {
-            width: 100%;
-            padding: 12px 15px;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            margin: 0 20px 20px;
+            text-align: center;
             font-size: 14px;
-            color: #333;
+            color: #666;
             cursor: pointer;
-            transition: all 0.2s ease;
         }
-        .ask-btn:hover {
-            background: #fafafa;
-            border-color: #ddd;
-            transform: translateY(-1px);
-        }
-        .ask-btn .icon {
-            width: 16px;
-            height: 16px;
-            background: #e6f0ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #409eff;
-            font-size: 12px;
-        }
-
-
-        /* 响应式调整 */
-        @media (max-width: 480px) {
-            .mobile-container { max-width: 100%; }
+         /* 答案展示区域 */
+        .answer-box {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #1565c0;
+            line-height: 1.6;
+            display: none; /* 默认隐藏 */
         }
     </style>
 </head>
 <body>
-    <div class="mobile-container">
-        <!-- 状态栏 -->
+    <!-- 顶部Logo行 -->
+    
 
-        <!-- 头部导航 -->
-        <div class="header">
-            <div class="back-btn">&lt;</div>
-            <div class="avatar"></div>
-            <div class="info">
-                <div class="title">我的客服</div>
-                <div class="subtitle">财产险客服热线：0531-66666979</div>
+    <!-- 客服页面主体 -->
+    <div class="customer-service-container">
+        <!-- 客服头部 -->
+        <div class="service-header">
+           
+            <div class="service-title">
+               <div class="logo-header">
+					        <img alt="中国人寿财产保险">
+					    </div>
+                <p>财产险客服热线：0531-66666979</p>
             </div>
         </div>
 
-        <!-- 主要内容 -->
-        <div class="main-content">
-            <!-- 咨询卡片 -->
-            <div class="consult-card">
-                <div class="card-header">
-                    <div class="card-title">请问您是否想咨询</div>
-                    <div class="change-btn">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16v16H4z"/>
-                            <path d="M4 8l8 8 8-8"/>
-                        </svg>
-                        换一换
-                    </div>
-                </div>
-                
-                <!-- 问题列表 -->
-                <div class="question-list">
-                    <div class="question-item" onclick="handleQuestion(this)">
-                        <span class="icon">◆</span>
-                        <span>电子保单如何下载？</span>
-                    </div>
-                    <div class="question-item" onclick="handleQuestion(this)">
-                        <span class="icon">◆</span>
-                        <span>没有行驶证可以办理保险过户吗？</span>
-                    </div>
-                    <div class="question-item" onclick="handleQuestion(this)">
-                        <span class="icon">◆</span>
-                        <span>线下服务网点怎么查询？</span>
-                    </div>
-                    <div class="question-item" onclick="handleQuestion(this)">
-                        <span class="icon">◇</span>
-                        <span>请问车子过户之后购买保险还可以继续享受之前的优惠吗？</span>
-                    </div>
-                </div>
+        <!-- 常见问题区域 -->
+        <div class="faq-section">
+            <div class="faq-title">
+                <span>请问您是否想咨询</span>
+                <div class="change-btn">☑ 换一换</div>
+            </div>
+            <div class="faq-list">
+            	  <div class="faq-item" onclick="showAnswer()">公众责任险有哪些保障范围？</div>
+            		<div class="faq-item">保单累计赔偿限额和每次事故赔偿限额分别是多少？</div>
+                <div class="faq-item">电子保单如何下载？</div>
+                <div class="faq-item">没有行驶证可以办理保险过户吗？</div>
+                <div class="faq-item">线下服务网点怎么查询？</div>
+                <div class="faq-item">请问车子过户之后购买保险还可以继续享受之前的优惠吗？</div>
             </div>
         </div>
-
-        <!-- 底部区域 -->
-        <div class="bottom-area">
-            <div class="bottom-buttons">
-                <div class="bottom-btn">服务进度</div>
-                <div class="bottom-btn">名下其他账号</div>
-            </div>
-            
-            <div class="ask-btn" onclick="handleAsk()">
-                <span class="icon">💬</span>
-                <span>找不到答案？点此提问</span>
-            </div>
+				<!-- 答案区域 -->
+        <div class="answer-box" id="answerBox"></div>
+        <!-- 底部按钮 -->
+        <div class="bottom-buttons">
+            <button class="bottom-btn">服务进度</button>
+            <button class="bottom-btn">名下其他账号</button>
+        </div>
+        <div class="ask-btn">
+            <span>🔍 找不到答案？点此提问</span>
         </div>
     </div>
-
-   
+    <script>
+        // 显示答案函数
+        function showAnswer() {
+            const answerBox = document.getElementById('answerBox');
+            // 答案文本
+            answerBox.innerText = '公众责任险：又称普通责任保险，是承保被保险人在经营活动场所内，因意外事故造成第三者人身伤亡或财产损失，依法应由被保险人承担的经济赔偿责任的险种。简单来说：你经营的场所 / 业务，不小心让客户、路人受伤 / 财物受损，保险公司帮你赔。';
+            // 显示答案
+            answerBox.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
