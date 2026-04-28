@@ -210,7 +210,7 @@
         .answer-box {
             margin: 15px 0;
             padding: 15px;
-            background-color: #e3f2fd;
+            background-color: #ff0000;
             border-radius: 8px;
             font-size: 15px;
             color: #1565c0;
@@ -228,7 +228,7 @@
         <div class="hotline-section">
             责任险客服热线: 0531-66666979 
             <span class="headset-icon">访问人数：</span>
-            <span>11600</span>
+            <span>11500</span>
         </div>
 
         <!-- 常见问题区域 -->
@@ -242,7 +242,7 @@
                 <li class="faq-item">保单累计赔偿限额和每次事故赔偿限额分别是多少?</li>
                 <li class="faq-item">电子保单如何下载?</li>
                 <li class="faq-item">是否承保电梯、自动扶梯、停车场责任?</li>
-                <li class="faq-item">因管理疏漏、设备老化导致的事故是否赔付?</li>
+                <li class="faq-item" onclick="showAnswer1()>为什么门店必须买公众责任险?</li>
                 <li class="faq-item">能否根据我们的经营规模、风险状况，提供个性化风险防范?</li>
             </ul>
         </div>
@@ -258,6 +258,14 @@
             const answerBox = document.getElementById('answerBox');
             // 答案文本
             answerBox.innerText = '公众责任险：又称普通责任保险，是承保被保险人在经营活动场所内，因意外事故造成第三者人身伤亡或财产损失，依法应由被保险人承担的经济赔偿责任的险种。简单来说：你经营的场所 / 业务，不小心让客户、路人受伤 / 财物受损，保险公司帮你赔。';
+            // 显示答案
+            answerBox.style.display = 'block';
+        }
+		  // 显示答案函数
+        function showAnswer1() {
+            const answerBox = document.getElementById('answerBox');
+            // 答案文本
+            answerBox.innerText = '公众责任险适用于超市、门店、酒店、商场、学校、公园、物业、餐馆等多种场所，因这些门店人流量大，滑倒摔伤高发，单起事故赔偿几万到几十万，转嫁经营风险。温馨提示:小店最好也买公众责任险，意外不分人流量，一次摔伤就亏损。';
             // 显示答案
             answerBox.style.display = 'block';
         }
